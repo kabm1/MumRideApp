@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:utext="${title}">Registration Page</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+        td span  {
+            font-size:90%;
+            font-style: italic;
+            color: red;
+        }
+        .error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<!-- Include _menu.html -->
+
+
+<h2>Register</h2>
+
+<form th:action="@{/register}" th:object="${person}" method="POST">
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" th:field="*{firstName}" /></td>
+            <td>
+                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">..</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" th:field="*{lastName}" /></td>
+            <td>
+                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">..</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" th:field="*{userDetail.password}" /> </td>
+            <td>
+                <span th:if="${#fields.hasErrors('userDetail.password')}" th:errors="*{userDetail.password}">..</span>
+            </td>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" th:field="*{userDetail.email}" /> </td>
+            <td>
+                <span th:if="${#fields.hasErrors('userDetail.email')}" th:errors="*{userDetailemail}">..</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td input>
+                <select th:field="*{gender}">
+                    <option value=""> -- </option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </td>
+            <td>
+                <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">..</span>
+            </td>
+        </tr>
+        <!--<tr>
+            <td>Regester As</td>
+            <td>
+                <select th:field="*{role}">
+
+                    <option value="Passenger">Passenger</option>
+                    <option value="Driver">Driver</option>
+                </select>
+            </td>
+            <td>
+                <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}">..</span>
+            </td>
+        </tr>-->
+
+
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input type="submit" value="Submit" />
+                <a th:href="@{/}">Cancel</a>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
